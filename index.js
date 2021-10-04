@@ -18,7 +18,7 @@ const video_id = 'F2LOrLh77F0';
     const page = await browser.newPage();
     page.setViewport({ width:1920, height: 1080});
     await page.goto('https://www.youtube.com/live_chat?v='+video_id);
-    await page.screenshot({path:'example2.png'});
+    await page.screenshot({path:'example.png'});
     const messageNodes = await page.$$('yt-live-chat-text-message-renderer');
     
     const texts = await Promise.all(
@@ -42,7 +42,7 @@ const video_id = 'F2LOrLh77F0';
     }
 
     write_array_to_file('chat_history.txt', texts);
-    
+
     await browser.close();
 })();
 
