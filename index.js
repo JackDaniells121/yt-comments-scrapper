@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const fs = require('fs');
 
 const firefoxOptions = {
     product: 'firefox',
@@ -7,7 +8,7 @@ const firefoxOptions = {
       // 'remote.log.level': 'Trace',
     },
     // Make browser logs visible
-    dumpio: true,
+    dumpio: false,
   };
 
 const video_id = 'F2LOrLh77F0';
@@ -28,9 +29,17 @@ const video_id = 'F2LOrLh77F0';
         
     console.log(texts);
     console.log({messagesCount:texts.length});
+    let ytlinks = [];
     texts.forEach(text =>{
-        if(text.indexOf("https://youtu.be/") > 0)
-            console.log("Found -->"+text);
+        if(text.indexOf("https://youtu.be/") > -1)
+            // console.log("Found --> "+text);
+            ytlinks.push(text);
     });
+
+    if(ytlinks.length > 0){
+        console.log(ytlinks);
+        fs.writeFile('ytlinks.txt', ytlinks, {'flag':'a'});
+    }
+
     await browser.close();
 })();
