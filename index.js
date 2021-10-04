@@ -22,11 +22,15 @@ const video_id = 'F2LOrLh77F0';
     
     const texts = await Promise.all(
         messageNodes.map(
-            message => message.$eval("#author-name", el => el.innerText)
+            message => message.$eval("#message", el => el.innerText)
         )
     ); 
         
     console.log(texts);
-
+    console.log({messagesCount:texts.length});
+    texts.forEach(text =>{
+        if(text.indexOf("https://youtu.be/") > 0)
+            console.log("Found -->"+text);
+    });
     await browser.close();
 })();
