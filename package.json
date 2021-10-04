@@ -4,11 +4,12 @@
     "description": "yt-chat-scrapper",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error no test specified\" && exit 1"
+        "start": "node index.js"
     },
     "author": "ju",
     "license": "MIT",
     "dependencies": {
-        "puppeteer": "^10.4.0"
+        "puppeteer": "^10.4.0",
+        "puppeteer-firefox": "^0.5.1"
     }
 }
